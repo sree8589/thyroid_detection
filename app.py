@@ -6,22 +6,33 @@ import json
 app = Flask(__name__)
 
 # Load model and encoders
-model = joblib.load(r"D:\anaco\caramia\xgb_model.pkl")
+model = joblib.load(r"D:\thyroid\xgb_model.pkl")
 label_encoders = joblib.load(r"D:\anaco\caramia\label_encoders.pkl")
 y_encoder = joblib.load(r"D:\anaco\caramia\y_encoder.pkl")
+scalar = joblib.load(r"D:\thyroid\scale_thy.pkl")
 
 # Load recommendations
 with open(r"D:\thyroid\treatment_recommendations.json", "r") as f:
     recommendations = json.load(f)
 
-# Define categorical and continuous columns
-categorical_cols = [
-    "sex", "on_thyroxine", "query_on_thyroxine", "on_antithyroid_meds", "sick",
-    "pregnant", "thyroid_surgery", "I131_treatment", "query_hypothyroid", 
-    "query_hyperthyroid", "lithium", "goitre", "tumor", "hypopituitary", 
-    "psych", "referral_source"
+# Define the exact feature order based on your input_data example
+feature_order = [
+    'age', 'sex', 'on_thyroxine', 'query_on_thyroxine', 'on_antithyroid_meds', 
+    'sick', 'pregnant', 'thyroid_surgery', 'I131_treatment', 'query_hypothyroid', 
+    'query_hyperthyroid', 'lithium', 'goitre', 'tumor', 'hypopituitary', 'psych', 
+    'TSH', 'T3', 'TT4', 'T4U', 'FTI', 'referral_source'
 ]
-continuous_cols = ["age", "TSH", "T3", "TT4", "T4U", "FTI"]
+
+# Categorical columns (for encoding)
+categorical_cols = [
+    'sex', 'on_thyroxine', 'query_on_thyroxine', 'on_antithyroid_meds', 'sick',
+    'pregnant', 'thyroid_surgery', 'I131_treatment', 'query_hypothyroid', 
+    'query_hyperthyroid', 'lithium', 'goitre', 'tumor', 'hypopituitary', 'psych', 
+    'referral_source'
+]
+
+# Continuous columns (for conversion to float)
+continuous_cols = ['age', 'TSH', 'T3', 'TT4', 'T4U', 'FTI']
 
 def get_age_group(age):
     """Categorize age into predefined age groups."""
@@ -60,6 +71,8 @@ def predict():
                     data[col] = label_encoders[col].transform([data[col]])[0]
                 else:
                     data[col] = -1  # Default for unseen values
+            elif col not in data:
+                data[col] = -1  # Default for missing categorical columns
 
         # Convert continuous values
         for col in continuous_cols:
@@ -68,9 +81,18 @@ def predict():
                     data[col] = float(data[col])
                 except ValueError:
                     data[col] = 0  # Default for invalid inputs
+            elif col not in data:
+                data[col] = 0  # Default for missing continuous columns
 
-        # Prepare input
-        input_data = np.array(list(data.values())).reshape(1, -1)
+        # Prepare input in the exact order expected by the model
+        input_data = [data.get(col, 0) for col in feature_order]  # Default to 0 if missing
+        input_data = np.array(input_data).reshape(1, -1)
+        print("Input data:", input_data)
+
+        # Scale the input data
+        input_data = scalar.transform(input_data)
+
+        # Make prediction
         prediction = model.predict(input_data)
         y_pred = y_encoder.inverse_transform(prediction)[0]
 
@@ -80,7 +102,8 @@ def predict():
                            .get(sex, {})
                            .get(age_group, {"Error": "No recommendations available."})
         )
-        print(rec)
+        print("Recommendation:", rec)
+
         return render_template('result.html', prediction=y_pred, recommendation=rec)
     
     except Exception as e:
