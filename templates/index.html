@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thyroid Prediction</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            max-width: 900px;
+            width: 100%;
+        }
+        h2 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        form {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        .full-width {
+            grid-column: span 2;
+        }
+        label {
+            color: #555;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        select, input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        select:focus, input:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 8px rgba(102, 126, 234, 0.3);
+            outline: none;
+        }
+        button {
+            background: linear-gradient(90deg, #28a745, #218838);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);
+        }
+        @media (max-width: 600px) {
+            form {
+                grid-template-columns: 1fr;
+            }
+            .full-width {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Thyroid Disease Prediction</h2>
+        
+        <form action="/predict" method="post">
+            <!-- Age -->
+            <div>
+                <label>Age:</label>
+                <input type="number" name="age" required>
+            </div>
+
+            <!-- Sex -->
+            <div>
+                <label>Sex:</label>
+                <select name="sex">
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                </select>
+            </div>
+
+            <!-- On Thyroxine -->
+            <div>
+                <label>On Thyroxine:</label>
+                <select name="on_thyroxine">
+                    <option value="t">Yes</option>
+                    <option value="f">No</option>
+                </select>
+            </div>
+
+            <!-- Query On Thyroxine -->
+            <div>
+                <label>Query On Thyroxine:</label>
+                <select name="query_on_thyroxine">
+                    <option value="t">Yes</option>
+                    <option value="f">No</option>
+                </select>
+            </div>
+
+            <!-- On Antithyroid Meds -->
+            <div>
+                <label>On Antithyroid Meds:</label>
+                <select name="on_antithyroid_meds">
+                    <option value="t">Yes</option>
+                    <option value="f">No</option>
+                </select>
+            </div>
+
+            <!-- Sick -->
+            <div>
+                <label>Sick:</label>
+                <select name="sick">
+                    <option value="t">Yes</option>
+                    <option value="f">No</option>
+                </select>
+            </div>
+
+            <!-- Pregnant -->
+            <div>
+                <label>Pregnant:</label>
+                <select name="pregnant">
+                    <option value="t">Yes</option>
+                    <option value="f">No</option>
+                </select>
+            </div>
+
+            <!-- Thyroid Surgery -->
+            <div>
+                <label>Thyroid Surgery:</label>
+                <select name="thyroid_surgery">
+                    <option value="t">Yes</option>
+                    <option value="f">No</option>
+                </select>
+            </div>
+
+            <!-- I131 Treatment -->
+            <div>
+                <label>I131 Treatment:</label>
+                <select name="I131_treatment">
+                    <option value="t">Yes</option>
+                    <option value="f">No</option>
+                </select>
+            </div>
+
+            <!-- Query Hypothyroid -->
+            <div>
+                <label>Query Hypothyroid:</label>
+                <select name="query_hypothyroid">
+                    <option value="t">Yes</option>
+                    <option value="f">No</option>
+                </select>
+            </div>
+
+            <!-- Query Hyperthyroid -->
+            <div>
+                <label>Query Hyperthyroid:</label>
+                <select name="query_hyperthyroid">
+                    <option value="t">Yes</option>
+                    <option value="f">No</option>
+                </select>
+            </div>
+
+            <!-- Lithium -->
+            <div>
+                <label>Lithium:</label>
+                <select name="lithium">
+                    <option value="t">Yes</option>
+                    <option value="f">No</option>
+                </select>
+            </div>
+
+            <!-- Goitre -->
+            <div>
+                <label>Goitre:</label>
+                <select name="goitre">
+                    <option value="t">Yes</option>
+                    <option value="f">No</option>
+                </select>
+            </div>
+
+            <!-- Tumor -->
+            <div>
+                <label>Tumor:</label>
+                <select name="tumor">
+                    <option value="t">Yes</option>
+                    <option value="f">No</option>
+                </select>
+            </div>
+
+            <!-- Hypopituitary -->
+            <div>
+                <label>Hypopituitary:</label>
+                <select name="hypopituitary">
+                    <option value="t">Yes</option>
+                    <option value="f">No</option>
+                </select>
+            </div>
+
+            <!-- Psych -->
+            <div>
+                <label>Psych:</label>
+                <select name="psych">
+                    <option value="t">Yes</option>
+                    <option value="f">No</option>
+                </select>
+            </div>
+
+            <!-- Referral Source -->
+            <div>
+                <label>Referral Source:</label>
+                <select name="referral_source">
+                    <option value="other">Other</option>
+                    <option value="SVI">SVI</option>
+                    <option value="SVHC">SVHC</option>
+                    <option value="STMW">STMW</option>
+                    <option value="SVHD">SVHD</option>
+                    <option value="WEST">WEST</option>
+                </select>
+            </div>
+
+            <!-- Continuous Fields -->
+            <div>
+                <label>TSH:</label>
+                <input type="number" name="TSH" step="any" required>
+            </div>
+
+            <div>
+                <label>T3:</label>
+                <input type="number" name="T3" step="any" required>
+            </div>
+
+            <div>
+                <label>TT4:</label>
+                <input type="number" name="TT4" step="any" required>
+            </div>
+
+            <div>
+                <label>T4U:</label>
+                <input type="number" name="T4U" step="any" required>
+            </div>
+
+            <div>
+                <label>FTI:</label>
+                <input type="number" name="FTI" step="any" required>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="full-width">Predict</button>
+        </form>
+    </div>
+</body>
+</html>

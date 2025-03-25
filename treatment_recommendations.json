@@ -1,0 +1,156 @@
+{
+    "Negative": {
+        "M": {
+            "18-30": {
+                "Diet": "Balanced diet with adequate iodine",
+                "Lifestyle": "Regular exercise, stress management",
+                "Follow-Up": "Annual thyroid function test"
+            },
+            "31-50": {
+                "Diet": "Nutrient-dense foods, moderate salt intake",
+                "Lifestyle": "Moderate exercise, stress management",
+                "Follow-Up": "Biennial thyroid check"
+            },
+            "51-70": {
+                "Diet": "Low sodium diet, adequate calcium",
+                "Lifestyle": "Regular walks, low-impact exercise",
+                "Follow-Up": "Annual thyroid screening"
+            },
+            "70+": {
+                "Diet": "Calcium and vitamin D supplements",
+                "Lifestyle": "Light physical activity, mental health focus",
+                "Follow-Up": "Annual thyroid screening"
+            }
+        },
+        "F": {
+            "18-30": {
+                "Diet": "Adequate iodine intake, iron-rich foods",
+                "Lifestyle": "Regular exercise, stress management",
+                "Follow-Up": "Annual thyroid test, especially pre-pregnancy"
+            },
+            "31-50": {
+                "Diet": "Balanced diet with calcium, moderate salt",
+                "Lifestyle": "Yoga, meditation",
+                "Follow-Up": "Biennial thyroid check"
+            },
+            "51-70": {
+                "Diet": "Low sodium, increased calcium intake",
+                "Lifestyle": "Low-impact exercise, stress management",
+                "Follow-Up": "Annual thyroid screening"
+            },
+            "70+": {
+                "Diet": "Vitamin D and calcium supplements",
+                "Lifestyle": "Light physical activities",
+                "Follow-Up": "Annual thyroid check"
+            }
+        }
+    },
+    "Hypothyroid": {
+        "M": {
+            "18-30": {
+                "Diet": "Iodine-rich foods, limit goitrogens",
+                "Lifestyle": "Regular exercise, stress reduction",
+                "Medication": "Levothyroxine",
+                "Follow-Up": "Quarterly thyroid function tests"
+            },
+            "31-50": {
+                "Diet": "Balanced diet, moderate carbs",
+                "Lifestyle": "Strength training, aerobic exercise",
+                "Medication": "Levothyroxine",
+                "Follow-Up": "Biannual tests"
+            },
+            "51-70": {
+                "Diet": "Calcium supplements, low sodium",
+                "Lifestyle": "Light exercises, yoga",
+                "Medication": "Levothyroxine",
+                "Follow-Up": "Quarterly thyroid check"
+            },
+            "70+": {
+                "Diet": "Soft foods, adequate hydration",
+                "Lifestyle": "Gentle activities, avoid stress",
+                "Medication": "Adjusted Levothyroxine",
+                "Follow-Up": "Frequent monitoring"
+            }
+        },
+        "F": {
+            "18-30": {
+                "Diet": "Seaweed, dairy products, iodized salt",
+                "Lifestyle": "Yoga, meditation",
+                "Medication": "Levothyroxine",
+                "Follow-Up": "Quarterly thyroid test"
+            },
+            "31-50": {
+                "Diet": "Low-fat, high-fiber diet",
+                "Lifestyle": "Regular walks, swimming",
+                "Medication": "Levothyroxine",
+                "Follow-Up": "Biannual tests"
+            },
+            "51-70": {
+                "Diet": "Calcium supplements, fiber-rich foods",
+                "Lifestyle": "Low-impact exercise",
+                "Medication": "Levothyroxine",
+                "Follow-Up": "Quarterly monitoring"
+            },
+            "70+": {
+                "Diet": "Nutrient-dense foods, hydration",
+                "Lifestyle": "Daily walks, light activities",
+                "Medication": "Adjusted Levothyroxine",
+                "Follow-Up": "Frequent checks"
+            }
+        }
+    },
+    "Hyperthyroid": {
+        "M": {
+            "18-30": {
+                "Diet": "Avoid iodine-rich foods",
+                "Lifestyle": "Moderate exercise, relaxation",
+                "Medication": "Methimazole, Propylthiouracil",
+                "Follow-Up": "Quarterly monitoring"
+            },
+            "31-50": {
+                "Diet": "Low-iodine diet",
+                "Lifestyle": "Stress management",
+                "Medication": "Methimazole",
+                "Follow-Up": "Biannual tests"
+            },
+            "51-70": {
+                "Diet": "Low-sodium, high-protein diet",
+                "Lifestyle": "Light physical activity",
+                "Medication": "Beta-blockers, Antithyroid meds",
+                "Follow-Up": "Quarterly monitoring"
+            },
+            "70+": {
+                "Diet": "Nutrient-dense foods, hydration",
+                "Lifestyle": "Gentle activities",
+                "Medication": "Dose-adjusted Methimazole",
+                "Follow-Up": "Frequent checks"
+            }
+        },
+        "F": {
+            "18-30": {
+                "Diet": "Low-iodine, nutrient-dense foods",
+                "Lifestyle": "Yoga, meditation",
+                "Medication": "Methimazole",
+                "Follow-Up": "Quarterly tests"
+            },
+            "31-50": {
+                "Diet": "Balanced diet, low iodine",
+                "Lifestyle": "Stress reduction",
+                "Medication": "Antithyroid drugs",
+                "Follow-Up": "Biannual tests"
+            },
+            "51-70": {
+                "Diet": "Calcium and Vitamin D-rich foods",
+                "Lifestyle": "Low-impact exercises",
+                "Medication": "Beta-blockers",
+                "Follow-Up": "Quarterly monitoring"
+            },
+            "70+": {
+                "Diet": "Soft foods, hydration",
+                "Lifestyle": "Relaxation therapies",
+                "Medication": "Adjusted Antithyroid meds",
+                "Follow-Up": "Frequent tests"
+            }
+        }
+    }
+}

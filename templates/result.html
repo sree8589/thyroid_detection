@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .result-container {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        h2 {
+            color: #28a745;
+            font-size: 1.8em;
+            margin: 20px 0;
+            padding: 10px;
+            background: rgba(40, 167, 69, 0.1);
+            border-radius: 10px;
+        }
+        h3 {
+            color: #555;
+            font-size: 1.4em;
+            margin-top: 20px;
+            border-bottom: 2px solid #667eea;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+        p {
+            color: #666;
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin: 10px 0;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+        p:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        a {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 30px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 25px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @media (max-width: 500px) {
+            .result-container {
+                padding: 20px;
+            }
+            h1 { font-size: 2em; }
+            h2 { font-size: 1.5em; }
+            h3 { font-size: 1.2em; }
+            p { font-size: 1em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="result-container">
+        <h1>Prediction Result</h1>
+        
+        <h2>Condition: {{ prediction }}</h2>
+        
+        {% if recommendation %}
+            <h3>Diet Recommendations</h3>
+            <p>{{ recommendation.get("Diet", "No specific diet recommendations.") }}</p>
+            
+            <h3>Lifestyle Tips</h3>
+            <p>{{ recommendation.get("Lifestyle", "No specific lifestyle tips.") }}</p>
+            
+            <h3>Follow-Up Schedule</h3>
+            <p>{{ recommendation.get("Follow-Up", "No follow-up schedule available.") }}</p>
+        {% else %}
+            <p>No recommendations available.</p>
+        {% endif %}
+
+        <a href="{{ url_for('home') }}">Go Back</a>
+    </div>
+</body>
+</html>
