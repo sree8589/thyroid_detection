@@ -6,7 +6,7 @@ import json
 app = Flask(__name__)
 
 # Load model and encoders
-model = joblib.load(r"D:\thyroid\xgb_model.pkl")
+model = joblib.load(r"D:\thyroid\xgb_best_model.pkl")
 label_encoders = joblib.load(r"D:\anaco\caramia\label_encoders.pkl")
 y_encoder = joblib.load(r"D:\anaco\caramia\y_encoder.pkl")
 scalar = joblib.load(r"D:\thyroid\scale_thy.pkl")
