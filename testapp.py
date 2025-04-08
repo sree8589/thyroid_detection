@@ -6,10 +6,10 @@ import json
 app = Flask(__name__)
 
 # Load model and encoders
-model = joblib.load(r"D:\thyroid\xgb_best_model.pkl")
-label_encoders = joblib.load(r"D:\thyroid\label_encoders.pkl")
-y_encoder = joblib.load(r"D:\thyroid\y_encoder.pkl")
-scalar = joblib.load(r"D:\thyroid\scale_thy.pkl")
+model = joblib.load(r"D:\anaco\caramia\xgb_best_model.pkl")
+label_encoders = joblib.load(r"D:\anaco\caramia\label_encoders.pkl")
+y_encoder = joblib.load(r"D:\anaco\caramia\y_encoder.pkl")
+scalar = joblib.load(r"D:\anaco\caramia\scale_thy.pkl")
 
 # Load recommendations
 with open(r"D:\thyroid\treatment_recommendations.json", "r") as f:
